@@ -33,7 +33,7 @@ LABEL maintainer="LGBT Libre"
 LABEL description="Landing LGBT Libre"
 
 # Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy static files from builder
 COPY --from=builder /app/dist /usr/share/nginx/html
