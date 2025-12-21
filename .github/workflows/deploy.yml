@@ -1,0 +1,57 @@
+name: Deploy to Dokploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy via Dokploy Webhook
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Trigger Dokploy Deploy
+        run: |
+          echo "🚀 Triggering deployment on Dokploy..."
+          
+          RESPONSE=$(curl -X POST "${{ secrets.DOKPLOY_WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -w "\n%{http_code}" \
+            -s)
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          
+          if [ "$HTTP_CODE" -eq 200 ] || [ "$HTTP_CODE" -eq 201 ]; then
+            echo "✅ Deployment triggered successfully"
+            exit 0
+          else
+            echo "❌ Deployment failed with status: $HTTP_CODE"
+            echo "$RESPONSE"
+            exit 1
+          fi
+      
+      - name: Wait for deployment
+        run: |
+          echo "⏳ Waiting 60 seconds for deployment to complete..."
+          sleep 60
+      
+      - name: Verify deployment with Retries
+        run: |
+          echo "🔍 Verifying deployment at https://lgbtlibre.davware.com..."
+          # Reintenta cada 10 segundos, hasta 6 veces (1 minuto total)
+          for i in {1..6}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://lgbtlibre.davware.com)
+            if [ "$STATUS" -eq 200 ]; then
+              echo "✅ Site is live!"
+              exit 0
+            fi
+            echo "⏳ Attempt $i: Site returned $STATUS. Retrying in 10s..."
+            sleep 10
+          done
+          echo "❌ Site failed to respond with 200 after 1 minute"
+          exit 1
