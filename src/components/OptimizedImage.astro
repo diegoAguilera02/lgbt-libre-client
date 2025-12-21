@@ -1,0 +1,232 @@
+---
+/**
+ * Muestra cómo usar el componente Image de Astro para optimizar imágenes
+ * 
+ * INSTALACIÓN:
+ * - Astro incluye optimización de imágenes por defecto
+ * - Solo necesitas instalar Sharp: pnpm add sharp
+ * 
+ * USO:
+ * 1. Coloca tus imágenes en src/assets/
+ * 2. Impórtalas en el componente
+ * 3. Usa <Image> con las props necesarias
+ */
+
+import { Image } from "astro:assets";
+
+// ========================================
+// OPCIÓN 1: Importar imágenes locales
+// ========================================
+// import heroImage from "../assets/images/hero.jpg";
+// import logoImage from "../assets/images/logo.png";
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: "lazy" | "eager";
+  class?: string;
+  sizes?: string;
+  quality?: number;
+  format?: "webp" | "avif" | "jpeg" | "png";
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  loading = "lazy",
+  class: className = "",
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  quality = 85,
+  format = "webp",
+} = Astro.props;
+---
+
+<!-- 
+  ========================================
+  EJEMPLO 1: Imagen Local Optimizada
+  ========================================
+  
+  Importa la imagen en el frontmatter:
+  import heroImage from "../assets/hero.jpg";
+  
+  Luego úsala así:
+  <Image
+    src={heroImage}
+    alt="Descripción de la imagen"
+    width={1200}
+    height={800}
+    loading="eager"
+    format="webp"
+    quality={85}
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1200px"
+    class="rounded-lg"
+  />
+  
+  Beneficios:
+  - ✅ Generación automática de múltiples tamaños
+  - ✅ Conversión a WebP/AVIF
+  - ✅ Lazy loading nativo
+  - ✅ Layout shift prevention
+  - ✅ Optimización automática
+-->
+
+<!-- 
+  ========================================
+  EJEMPLO 2: Imagen Remota (Unsplash, etc)
+  ========================================
+  
+  Para imágenes remotas, usa la etiqueta <img> normal:
+  <img
+    src="https://images.unsplash.com/photo-..."
+    alt="Descripción"
+    loading="lazy"
+    width="1200"
+    height="800"
+  />
+  
+  IMPORTANTE: 
+  - Image de Astro NO funciona con URLs remotas en modo static
+  - Para remotas, usa <img> con atributos de performance
+-->
+
+<!-- 
+  ========================================
+  EJEMPLO 3: Diferentes formatos responsive
+  ========================================
+  
+  <Image
+    src={productImage}
+    alt="Producto"
+    widths={[400, 800, 1200, 1600]}
+    sizes="(max-width: 640px) 400px, (max-width: 1024px) 800px, 1200px"
+    format="webp"
+  />
+  
+  Esto generará:
+  - product-400w.webp
+  - product-800w.webp  
+  - product-1200w.webp
+  - product-1600w.webp
+-->
+
+<!-- 
+  ========================================
+  EJEMPLO 4: Múltiples formatos (WebP + AVIF)
+  ========================================
+  
+  <picture>
+    <source
+      srcset={heroImage.src + "?format=avif"}
+      type="image/avif"
+    />
+    <source
+      srcset={heroImage.src + "?format=webp"}
+      type="image/webp"
+    />
+    <Image
+      src={heroImage}
+      alt="Hero"
+      format="jpeg"
+    />
+  </picture>
+-->
+
+{
+  typeof src === "string" ? (
+    // Imagen remota: usar <img> normal
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      width={width}
+      height={height}
+      class={className}
+    />
+  ) : (
+    // Imagen local: usar <Image> de Astro
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      sizes={sizes}
+      quality={quality}
+      format={format}
+      class={className}
+    />
+  )
+}
+
+<!-- 
+  ========================================
+  CONFIGURACIÓN EN astro.config.mjs
+  ========================================
+  
+  import { defineConfig } from 'astro/config';
+  
+  export default defineConfig({
+    image: {
+      // Servicio de optimización (default: sharp)
+      service: {
+        entrypoint: 'astro/assets/services/sharp'
+      },
+      
+      // Dominios permitidos para imágenes remotas
+      domains: ['images.unsplash.com'],
+      
+      // Formatos de salida permitidos
+      formats: ['webp', 'avif'],
+    },
+  });
+-->
+
+<!-- 
+  ========================================
+  ESTRUCTURA DE CARPETAS RECOMENDADA
+  ========================================
+  
+  src/
+  ├── assets/
+  │   ├── images/
+  │   │   ├── hero/
+  │   │   │   ├── hero-desktop.jpg
+  │   │   │   └── hero-mobile.jpg
+  │   │   ├── team/
+  │   │   │   ├── person-1.jpg
+  │   │   │   └── person-2.jpg
+  │   │   └── logos/
+  │   │       └── logo.svg
+  │   └── icons/
+  │       └── icon.svg
+  
+  IMPORTANTE: Solo las imágenes en src/assets/ se optimizan
+-->
+
+<!-- 
+  ========================================
+  TIPS DE PERFORMANCE
+  ========================================
+  
+  1. Loading priority:
+     - Hero images: loading="eager"
+     - Below fold: loading="lazy"
+  
+  2. Sizes attribute:
+     - Mobile: "(max-width: 640px) 100vw"
+     - Tablet: "(max-width: 1024px) 50vw"
+     - Desktop: "33vw"
+  
+  3. Quality:
+     - Photos: quality={85}
+     - Icons/logos: quality={95}
+     - Thumbnails: quality={70}
+  
+  4. Format:
+     - Modern: format="webp" o "avif"
+     - Fallback: Astro lo maneja automáticamente
+-->

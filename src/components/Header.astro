@@ -1,0 +1,48 @@
+---
+// Header component
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/80"
+  role="banner"
+>
+  <div class="container-wide flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center gap-3" aria-label="LGBT Libre - Inicio">
+      <img src="/images/lgbtlibre-icon.svg" alt="LGBT Libre Logo" class="h-9 w-9 dark:hidden" />
+      <img src="/images/lgbtlibre-white-icon.svg" alt="LGBT Libre Logo" class="hidden h-9 w-9 dark:block" />
+      <span class="text-base font-bold tracking-tight">LGBT Libre</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 text-sm font-medium sm:flex md:gap-8" aria-label="Navegación principal">
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#mision">¿Qué hacemos?</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#campanas">Incidencia</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#apoyo-legal">Apoyo Legal</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#noticias">Noticias</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button id="toggle-dark" class="btn-ghost rounded-full p-2" aria-label="Cambiar tema">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+      <button class="btn-ghost inline-flex items-center gap-2 sm:hidden" aria-expanded="false" aria-controls="mobile-menu" id="menu-btn">
+        <span>Menú</span>
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="container-wide hidden border-t border-neutral-200 bg-white py-3 dark:border-neutral-800 dark:bg-neutral-900 sm:hidden">
+    <div class="grid gap-2 text-sm">
+      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#mision">¿Qué hacemos?</a>
+      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#campanas">Incidencia</a>
+      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#apoyo-legal">Apoyo Legal</a>
+      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#noticias">Noticias</a>
+      <a class="btn-accent mt-2" href="#donar">Apóyanos</a>
+    </div>
+  </div>
+</header>

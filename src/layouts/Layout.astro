@@ -1,0 +1,132 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+}
+
+const {
+  title = "LGBT Libre - Por una sociedad más justa e inclusiva",
+  description = "Trabajamos para conseguir la plena inclusión de la diversidad sexual y de género en la sociedad chilena.",
+  image = "/og-image.jpg",
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE || "https://tudominio.cl";
+const fullTitle = title;
+const canonicalURL = new URL(canonical, siteUrl);
+const ogImageURL = new URL(image, siteUrl);
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO Básico -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Tema móvil -->
+    <meta
+      name="theme-color"
+      content="#db2777"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1f2937"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LGBT Libre",
+      "url": siteUrl,
+      "logo": `${siteUrl}/logo.png`,
+      "description": description,
+      "sameAs": [
+        "https://twitter.com/lgbtlibre",
+        "https://facebook.com/lgbtlibre",
+      ],
+    })} />
+
+    <!-- Inicializar tema oscuro (evita FOUC) -->
+    <script is:inline>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        if (
+          theme === "dark" ||
+          (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body class="font-sans">
+    <slot />
+
+    <!-- Scripts del tema y menú móvil -->
+    <script>
+      // Toggle dark mode
+      const toggleBtn = document.getElementById("toggle-dark");
+      const root = document.documentElement;
+
+      toggleBtn?.addEventListener("click", () => {
+        root.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          root.classList.contains("dark") ? "dark" : "light"
+        );
+      });
+
+      // Menú móvil
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn?.addEventListener("click", () => {
+        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
+        menuBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+        mobileMenu?.classList.toggle("hidden");
+      });
+
+      // Cerrar menú al hacer click en un enlace
+      const mobileLinks = mobileMenu?.querySelectorAll("a");
+      mobileLinks?.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu?.classList.add("hidden");
+          menuBtn?.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
+  </body>
+</html>

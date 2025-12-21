@@ -1,0 +1,74 @@
+---
+// Newsletter subscription component
+---
+
+<section class="section bg-neutral-50 dark:bg-neutral-950">
+  <div class="container-narrow text-center">
+    <h2 class="heading-2">Suscríbete a nuestro boletín</h2>
+    <p class="lead mt-2">
+      Recibe noticias, eventos y contenido exclusivo sobre diversidad e
+      inclusión directamente en tu correo.
+    </p>
+
+    <form
+      class="mx-auto mt-6 max-w-md"
+      action="#"
+      method="POST"
+      id="newsletter-form"
+    >
+      <div class="space-y-3">
+        <input
+          type="text"
+          name="nombre"
+          class="w-full rounded-md border-neutral-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900"
+          placeholder="Nombre *"
+          required
+          aria-label="Nombre"
+        />
+        <input
+          type="text"
+          name="apellido"
+          class="w-full rounded-md border-neutral-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900"
+          placeholder="Apellido *"
+          required
+          aria-label="Apellido"
+        />
+        <input
+          type="email"
+          name="email"
+          class="w-full rounded-md border-neutral-300 shadow-sm focus:border-brand-500 focus:ring-brand-500 dark:border-neutral-700 dark:bg-neutral-900"
+          placeholder="Correo electrónico *"
+          required
+          aria-label="Correo electrónico"
+        />
+        <button type="submit" class="btn-primary w-full">Suscribirme</button>
+      </div>
+      <p class="mt-3 text-xs text-neutral-500">
+        * Campos requeridos. Al suscribirte aceptas nuestras políticas de
+        privacidad.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("newsletter-form");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form as HTMLFormElement);
+    const data = {
+      nombre: formData.get("nombre"),
+      apellido: formData.get("apellido"),
+      email: formData.get("email"),
+    };
+
+    // TODO: Integrar con API de newsletter (Mailchimp, SendGrid, etc.)
+    console.log("Newsletter subscription:", data);
+
+    // Mostrar mensaje de éxito
+    alert("¡Gracias por suscribirte! Te enviaremos nuestro próximo boletín.");
+    (form as HTMLFormElement).reset();
+  });
+</script>

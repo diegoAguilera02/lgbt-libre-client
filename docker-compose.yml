@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  lgbt-libre:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lgbt-libre:latest
+    restart: unless-stopped
+    
+    environment:
+      - PUBLIC_SITE_URL=${PUBLIC_SITE_URL}
+      - NODE_ENV=${NODE_ENV:-production}
+
+    # (traffic configure labels dockploy)

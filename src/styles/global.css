@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100;
+  }
+}
+
+@layer components {
+  /* Contenedores */
+  .container-wide {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-narrow {
+    @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Secciones */
+  .section {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+  
+  /* Tipografía */
+  .heading-hero {
+    @apply text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl;
+  }
+  
+  .heading-2 {
+    @apply text-2xl font-bold tracking-tight sm:text-3xl;
+  }
+  
+  .lead {
+    @apply text-lg text-neutral-600 dark:text-neutral-300;
+  }
+  
+  /* Componentes */
+  .chip {
+    @apply inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-800 dark:bg-brand-900/20 dark:text-brand-200;
+  }
+  
+  .card {
+    @apply rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900;
+  }
+  
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500;
+  }
+  
+  .btn-accent {
+    @apply btn bg-brand-100 text-brand-800 hover:bg-brand-200 focus:ring-brand-500 dark:bg-brand-900/20 dark:text-brand-200 dark:hover:bg-brand-900/30;
+  }
+  
+  .btn-ghost {
+    @apply btn border border-neutral-300 bg-transparent hover:bg-neutral-50 focus:ring-neutral-500 dark:border-neutral-700 dark:hover:bg-neutral-800;
+  }
+  
+  /* Sombras */
+  .shadow-soft {
+    @apply shadow-xl shadow-neutral-900/5;
+  }
+}

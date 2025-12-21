@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+
+// Para imágenes remotas de Unsplash, usamos la etiqueta img normal
+// Para imágenes locales, importaríamos así:
+// import heroImage from "../assets/hero.jpg";
+---
+
+<section class="section bg-neutral-50 dark:bg-neutral-950">
+  <div class="container-wide grid items-center gap-10 lg:grid-cols-2">
+    <div class="space-y-6">
+      <span class="chip">Diversidad Sexual y de Género</span>
+      <h1 class="heading-hero">Por una sociedad más justa e inclusiva</h1>
+      <p class="lead max-w-prose">
+        Trabajamos por la plena inclusión de todas las personas,
+        independientemente de su orientación sexual o identidad de género, en
+        todos los ámbitos de la sociedad chilena.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#mision" class="btn-primary">¿Qué hacemos?</a>
+        <a href="#apoyo-legal" class="btn-ghost">Apoyo Legal</a>
+      </div>
+    </div>
+
+    <div
+      class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-800"
+    >
+      <!-- Imagen remota de Unsplash -->
+      <img
+        src="https://images.unsplash.com/photo-1513569771920-c9e1d31714af?q=80&w=1200&auto=format&fit=crop"
+        alt="Personas reunidas en campaña por la diversidad"
+        class="h-full w-full object-cover"
+        loading="eager"
+        width="1200"
+        height="900"
+      />
+
+      <!-- 
+        Para usar Image con imagen local:
+        <Image
+          src={heroImage}
+          alt="Personas reunidas en campaña por la diversidad"
+          class="h-full w-full object-cover"
+          loading="eager"
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          format="webp"
+          quality={85}
+        />
+      -->
+
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-brand-600/20 to-transparent"
+        aria-hidden="true"
+      >
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+// Legal Support section component
+const supportTypes = [
+  {
+    title: "Asesoría Legal Gratuita",
+    description: "Orientación legal en casos de discriminación laboral, escolar o en servicios públicos.",
+  },
+  {
+    title: "Acompañamiento en Denuncias",
+    description: "Te acompañamos en el proceso de denuncia ante instituciones y tribunales.",
+  },
+  {
+    title: "Defensa de Derechos",
+    description: "Representación legal en casos de vulneración de derechos fundamentales.",
+  },
+];
+---
+
+<section id="apoyo-legal" class="section">
+  <div class="container-wide">
+    <div class="mb-8 text-center">
+      <h2 class="heading-2">Apoyo Legal</h2>
+      <p class="lead mt-2">
+        Brindamos asesoría legal gratuita y especializada
+      </p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      {
+        supportTypes.map((support) => (
+          <div class="card">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-100 dark:bg-brand-900/20">
+              <svg
+                class="h-6 w-6 text-brand-600 dark:text-brand-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="mb-2 font-semibold">{support.title}</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300">
+              {support.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="https://iguales.cl/contacto/" class="btn-primary">
+        Solicitar Asesoría
+      </a>
+    </div>
+  </div>
+</section>
