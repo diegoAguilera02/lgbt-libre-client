@@ -1,0 +1,182 @@
+---
+const actionLines = [
+  {
+    title: "Difusión",
+    activities: [
+      { name: "Redes sociales", icon: "M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" },
+      { name: "Ferias ciudadanas", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" }
+    ],
+    icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z",
+    color: "from-purple-500 to-purple-600",
+    bgColor: "bg-purple-100 dark:bg-purple-900/20",
+    textColor: "text-purple-600 dark:text-purple-400"
+  },
+  {
+    title: "Arte y Cultura",
+    activities: [
+      { name: "Club de lectura", icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" },
+      { name: "Club de escritura", icon: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" },
+      { name: "Club de cine", icon: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" },
+      { name: "Club de collage", icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" },
+      { name: "Club de coro", icon: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" }
+    ],
+    icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0a4 4 0 004-4v-4a4 4 0 014-4h2M9 5h2",
+    color: "from-pink-500 to-pink-600",
+    bgColor: "bg-pink-100 dark:bg-pink-900/20",
+    textColor: "text-pink-600 dark:text-pink-400"
+  },
+  {
+    title: "Salud",
+    activities: [
+      { name: "Club de voleibol", icon: "M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" },
+      { name: "Grupo de apoyo", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
+      { name: "Cola la exploradora", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }
+    ],
+    icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+    color: "from-red-500 to-red-600",
+    bgColor: "bg-red-100 dark:bg-red-900/20",
+    textColor: "text-red-600 dark:text-red-400"
+  },
+  {
+    title: "Educación",
+    activities: [
+      { name: "Talleres psicoeducativos", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" }
+    ],
+    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+    color: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-100 dark:bg-blue-900/20",
+    textColor: "text-blue-600 dark:text-blue-400"
+  },
+];
+---
+
+<section id="lineas-accion" class="section bg-neutral-50 dark:bg-neutral-950">
+  <div class="container-wide">
+    <div class="grid gap-12 lg:grid-cols-[1fr,350px]">
+      <!-- Columna izquierda: Header + Cards -->
+      <div class="space-y-8">
+        <!-- Header -->
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Líneas de acción
+          </div>
+          <h2 class="text-3xl font-bold text-neutral-900 dark:text-neutral-50 sm:text-4xl">
+            Cómo <span class="bg-gradient-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent dark:from-brand-400 dark:to-brand-300">trabajamos</span>
+          </h2>
+          <p class="max-w-3xl text-lg text-neutral-700 dark:text-neutral-300">
+            Nuestro trabajo se organiza en cuatro líneas estratégicas que abarcan
+            diferentes áreas de impacto en la comunidad.
+          </p>
+        </div>
+
+        <!-- Action Lines Grid -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {actionLines.map((line) => (
+            <div class="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-900">
+              <!-- Gradient background on hover -->
+              <div class={`absolute inset-0 bg-gradient-to-br ${line.color} opacity-0 transition-opacity group-hover:opacity-5`} aria-hidden="true"></div>
+
+              <div class="relative space-y-4">
+                <!-- Icon -->
+                <div class={`flex h-14 w-14 items-center justify-center rounded-xl ${line.bgColor} transition-transform group-hover:scale-110`}>
+                  <svg
+                    class={`h-7 w-7 ${line.textColor}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={line.icon}
+                    />
+                  </svg>
+                </div>
+
+                <!-- Title -->
+                <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">
+                  {line.title}
+                </h3>
+
+                <!-- Activities -->
+                <ul class="space-y-2">
+                  {line.activities.map((activity) => (
+                    <li class="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+                      <svg class={`mt-0.5 h-4 w-4 flex-shrink-0 ${line.textColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={activity.icon} />
+                      </svg>
+                      <span class="leading-tight">{activity.name}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- Learn more link -->
+                <div class="pt-2">
+                  <button class={`group/link inline-flex items-center gap-1 text-sm font-medium ${line.textColor} transition-gap hover:gap-2`}>
+                    <span>Ver más</span>
+                    <svg class="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Columna derecha: CTA sticky -->
+      <div class="lg:sticky lg:top-24 lg:self-start">
+        <div class="rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-white p-8 shadow-lg dark:border-brand-800 dark:from-brand-950 dark:to-neutral-900">
+          <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-600 text-white dark:bg-brand-500">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="mb-3 text-2xl font-bold text-neutral-900 dark:text-neutral-50">
+            ¿Quieres participar?
+          </h3>
+          <p class="mb-6 text-neutral-700 dark:text-neutral-300">
+            Únete a alguna de nuestras líneas de acción y forma parte del cambio.
+          </p>
+          <a href="#newsletter" class="btn-primary inline-flex w-full items-center justify-center gap-2">
+            <span>Contáctanos</span>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+
+          <!-- Stats o información adicional -->
+          <div class="mt-6 space-y-3 border-t border-neutral-200 pt-6 dark:border-neutral-700">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 dark:bg-brand-900/30">
+                <svg class="h-5 w-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Comunidad activa</div>
+                <div class="text-xs text-neutral-600 dark:text-neutral-400">Súmate al movimiento</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-100 dark:bg-brand-900/30">
+                <svg class="h-5 w-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Impacto real</div>
+                <div class="text-xs text-neutral-600 dark:text-neutral-400">Hacemos la diferencia</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

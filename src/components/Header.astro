@@ -14,8 +14,9 @@
     </a>
 
     <nav class="hidden items-center gap-6 text-sm font-medium sm:flex md:gap-8" aria-label="Navegación principal">
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#mision">¿Qué hacemos?</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#campanas">Incidencia</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#quienes-somos">Quiénes somos</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#nuestra-historia">Nuestra historia</a>
+      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#lineas-accion">Líneas de acción</a>
       <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#apoyo-legal">Apoyo Legal</a>
       <a class="hover:text-brand-700 dark:hover:text-brand-300" href="#noticias">Noticias</a>
     </nav>
@@ -38,11 +39,50 @@
   <!-- Menú móvil -->
   <div id="mobile-menu" class="container-wide hidden border-t border-neutral-200 bg-white py-3 dark:border-neutral-800 dark:bg-neutral-900 sm:hidden">
     <div class="grid gap-2 text-sm">
-      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#mision">¿Qué hacemos?</a>
-      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#campanas">Incidencia</a>
-      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#apoyo-legal">Apoyo Legal</a>
-      <a class="rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#noticias">Noticias</a>
-      <a class="btn-accent mt-2" href="#donar">Apóyanos</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#quienes-somos">Quiénes somos</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#nuestra-historia">Nuestra historia</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#lineas-accion">Líneas de acción</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#apoyo-legal">Apoyo Legal</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="#noticias">Noticias</a>
+      <a class="mobile-nav-link btn-accent mt-2" href="#newsletter">Suscríbete</a>
     </div>
   </div>
 </header>
+
+<script>
+  // Smooth scroll con offset para header fijo
+  document.addEventListener('DOMContentLoaded', () => {
+    const headerHeight = 64; // Altura del header en px
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Manejar clicks en todos los links de navegación
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        e.preventDefault();
+
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+
+          // Cerrar menú móvil si está abierto
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
+

@@ -3,8 +3,31 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* 64px - altura del header */
+  }
+
   body {
     @apply bg-white text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100;
+  }
+
+  /* Animación de entrada para secciones */
+  @media (prefers-reduced-motion: no-preference) {
+    section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
