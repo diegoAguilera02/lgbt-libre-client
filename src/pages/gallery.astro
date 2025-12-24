@@ -1,0 +1,433 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const title = 'Galería | LGBT+ Libre';
+const description = 'Galería de imágenes de las actividades y eventos de LGBT+ Libre';
+
+// Organizar imágenes por categoría con iconos y colores
+const galleries = [
+  {
+    category: 'Coro Voces del Orgullo',
+    folder: 'Coro Voces del Orgullo',
+    description: 'Nuestro coro que celebra la diversidad a través de la música',
+    icon: 'M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3',
+    color: 'morado',
+    images: [
+      '3bc22f5a-ac47-4af5-b408-ca2149d719bc.jpeg',
+      '86a9201c-2247-4fd6-8d36-98ea0a057bc9.jpeg',
+    ]
+  },
+  {
+    category: 'Club de Lectura LGBT+',
+    folder: 'Club Lectura LGBT',
+    description: 'Espacio de encuentro literario y reflexión',
+    icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+    color: 'brand',
+    images: [
+      '79c31126-fbdd-415e-9443-732effd61734.jpeg',
+      '79c31126-fbdd-415e-9443-732effd61734-1.jpeg',
+      '79c31126-fbdd-415e-9443-732effd61734-2.jpeg',
+    ]
+  },
+  {
+    category: 'Club de Escritura LGBT+',
+    folder: 'Club Escritura LGBT',
+    description: 'Taller de creación literaria y expresión escrita',
+    icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z',
+    color: 'azul',
+    images: [
+      'IMG_1162.JPG',
+    ]
+  },
+  {
+    category: 'Club de Collage LGBT+',
+    folder: 'Club de Collage LGBT',
+    description: 'Espacio creativo de expresión artística mediante collage',
+    icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
+    color: 'naranja',
+    images: []
+  },
+  {
+    category: 'Cola La Exploradora',
+    folder: 'Cola La Exploradora',
+    description: 'Actividades de descubrimiento y exploración comunitaria',
+    icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+    color: 'verde',
+    images: []
+  },
+  {
+    category: 'Diversipicnic LGBT+',
+    folder: 'Diversipicnic LGBT',
+    description: 'Encuentros al aire libre para compartir en comunidad',
+    icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
+    color: 'brand',
+    images: []
+  },
+  {
+    category: 'Grupos de Apoyo',
+    folder: 'Grupos de apoyo',
+    description: 'Espacios seguros de contención y apoyo mutuo',
+    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    color: 'morado',
+    images: []
+  },
+  {
+    category: 'Marcha de las Disidencias',
+    folder: 'Marcha de las disidencias',
+    description: 'Participación en marchas y manifestaciones por nuestros derechos',
+    icon: 'M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9',
+    color: 'azul',
+    images: []
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <Header />
+
+  <main class="pt-16">
+    <!-- Hero de Galería -->
+    <section class="section bg-gradient-to-br from-brand-50 via-white to-morado-50/30 dark:from-neutral-950 dark:via-neutral-900 dark:to-morado-950/20">
+      <div class="container-wide">
+        <div class="mx-auto max-w-3xl text-center">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Galería
+          </div>
+          <h1 class="heading-2 mt-4 text-4xl text-neutral-900 dark:text-neutral-50 md:text-5xl">
+            Nuestros Momentos
+          </h1>
+          <p class="lead mt-4 text-neutral-700 dark:text-neutral-300">
+            Conoce nuestras actividades, eventos y la comunidad que construimos juntos
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galerías por categoría -->
+    {galleries.map((gallery, index) => {
+      const isEven = index % 2 === 0;
+      const bgClass = isEven
+        ? 'bg-white dark:bg-neutral-900'
+        : 'bg-neutral-50 dark:bg-neutral-950';
+
+      // Mapeo de colores completos para Tailwind JIT
+      const colorClasses = {
+        morado: {
+          iconBg: 'bg-morado-100 dark:bg-morado-900/30',
+          iconText: 'text-morado-600 dark:text-morado-400',
+          overlayBg: 'group-hover:bg-morado-600/90',
+          emptyBg: 'bg-morado-100 dark:bg-morado-900/30',
+          emptyText: 'text-morado-600 dark:text-morado-400'
+        },
+        brand: {
+          iconBg: 'bg-brand-100 dark:bg-brand-900/30',
+          iconText: 'text-brand-600 dark:text-brand-400',
+          overlayBg: 'group-hover:bg-brand-600/90',
+          emptyBg: 'bg-brand-100 dark:bg-brand-900/30',
+          emptyText: 'text-brand-600 dark:text-brand-400'
+        },
+        azul: {
+          iconBg: 'bg-azul-100 dark:bg-azul-900/30',
+          iconText: 'text-azul-600 dark:text-azul-400',
+          overlayBg: 'group-hover:bg-azul-600/90',
+          emptyBg: 'bg-azul-100 dark:bg-azul-900/30',
+          emptyText: 'text-azul-600 dark:text-azul-400'
+        },
+        naranja: {
+          iconBg: 'bg-naranja-100 dark:bg-naranja-900/30',
+          iconText: 'text-naranja-600 dark:text-naranja-400',
+          overlayBg: 'group-hover:bg-naranja-600/90',
+          emptyBg: 'bg-naranja-100 dark:bg-naranja-900/30',
+          emptyText: 'text-naranja-600 dark:text-naranja-400'
+        },
+        verde: {
+          iconBg: 'bg-verde-100 dark:bg-verde-900/30',
+          iconText: 'text-verde-600 dark:text-verde-400',
+          overlayBg: 'group-hover:bg-verde-600/90',
+          emptyBg: 'bg-verde-100 dark:bg-verde-900/30',
+          emptyText: 'text-verde-600 dark:text-verde-400'
+        }
+      };
+
+      const colors = colorClasses[gallery.color as keyof typeof colorClasses];
+
+      return (
+        <section
+          class={`section ${bgClass}`}
+          id={gallery.folder.toLowerCase().replace(/\s+/g, '-')}
+        >
+          <div class="container-wide">
+            <!-- Encabezado de categoría con icono -->
+            <div class="mb-10 flex flex-col items-center text-center">
+              <div class={`mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${colors.iconBg} ${colors.iconText}`}>
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={gallery.icon} />
+                </svg>
+              </div>
+              <h2 class="heading-2 text-3xl text-neutral-900 dark:text-neutral-50">
+                {gallery.category}
+              </h2>
+              <p class="lead mt-2 max-w-2xl text-neutral-600 dark:text-neutral-400">
+                {gallery.description}
+              </p>
+            </div>
+
+            {/* Mostrar imágenes si existen */}
+            {gallery.images.length > 0 ? (
+              <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {gallery.images.map((image, imgIndex) => {
+                  const imagePath = `/images/${gallery.folder}/${image}`;
+                  return (
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100 shadow-sm transition-all hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-800">
+                      <a
+                        href={imagePath}
+                        class="block aspect-[4/3]"
+                        data-lightbox={gallery.folder}
+                        data-title={`${gallery.category} - Imagen ${imgIndex + 1}`}
+                      >
+                        <img
+                          src={imagePath}
+                          alt={`${gallery.category} - Imagen ${imgIndex + 1}`}
+                          loading="lazy"
+                          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <!-- Overlay al hover -->
+                        <div class={`absolute inset-0 flex items-center justify-center opacity-0 backdrop-blur-0 transition-all duration-300 group-hover:opacity-100 group-hover:backdrop-blur-sm ${colors.overlayBg}`}>
+                          <div class="translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
+                            <svg class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg>
+                            <p class="mt-2 text-sm font-medium text-white">Ver imagen</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div class="rounded-2xl border-2 border-dashed border-neutral-300 bg-neutral-100/50 p-12 text-center dark:border-neutral-700 dark:bg-neutral-800/50">
+                <div class={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${colors.emptyBg} ${colors.emptyText}`}>
+                  <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <p class="text-neutral-600 dark:text-neutral-400">
+                  Próximamente agregaremos imágenes de esta actividad
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    })}
+
+    <!-- CTA al final -->
+    <section class="section bg-gradient-to-br from-brand-50 via-morado-50 to-white dark:from-neutral-950 dark:via-morado-950/20 dark:to-neutral-900">
+      <div class="container-narrow text-center">
+        <div class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-2 text-sm font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Únete a nosotros
+        </div>
+        <h2 class="heading-2 mt-4 text-3xl text-neutral-900 dark:text-neutral-50">
+          ¿Quieres ser parte?
+        </h2>
+        <p class="lead mt-4 text-neutral-700 dark:text-neutral-300">
+          Únete a nuestras actividades y forma parte de la comunidad LGBT+ Libre
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/#lineas-accion" class="btn-primary inline-flex items-center gap-2">
+            <span>Ver nuestras actividades</span>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="/#newsletter" class="btn-ghost inline-flex items-center gap-2">
+            <span>Contáctanos</span>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 p-4">
+    <button
+      id="lightbox-close"
+      class="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+      aria-label="Cerrar lightbox"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/20"
+      aria-label="Imagen anterior"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div class="relative max-h-full max-w-5xl">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-h-[90vh] w-auto rounded-lg object-contain"
+      />
+      <p id="lightbox-title" class="mt-4 text-center text-white"></p>
+    </div>
+
+    <button
+      id="lightbox-next"
+      class="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/20"
+      aria-label="Siguiente imagen"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</Layout>
+
+<script>
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+
+  let currentImages: HTMLAnchorElement[] = [];
+  let currentIndex = 0;
+
+  // Abrir lightbox
+  document.querySelectorAll('.gallery-item a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const anchor = link as HTMLAnchorElement;
+      const gallery = anchor.dataset.lightbox;
+
+      // Obtener todas las imágenes de la misma galería
+      currentImages = Array.from(
+        document.querySelectorAll(`.gallery-item a[data-lightbox="${gallery}"]`)
+      ) as HTMLAnchorElement[];
+
+      currentIndex = currentImages.indexOf(anchor);
+      showImage(currentIndex);
+      lightbox?.classList.remove('hidden');
+      lightbox?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Cerrar lightbox
+  const closeLightbox = () => {
+    lightbox?.classList.add('hidden');
+    lightbox?.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navegación
+  const showImage = (index: number) => {
+    if (index < 0) index = currentImages.length - 1;
+    if (index >= currentImages.length) index = 0;
+
+    currentIndex = index;
+    const currentLink = currentImages[index];
+
+    if (lightboxImage && lightboxTitle) {
+      lightboxImage.src = currentLink.href;
+      lightboxImage.alt = currentLink.dataset.title || '';
+      lightboxTitle.textContent = currentLink.dataset.title || '';
+    }
+  };
+
+  lightboxPrev?.addEventListener('click', () => showImage(currentIndex - 1));
+  lightboxNext?.addEventListener('click', () => showImage(currentIndex + 1));
+
+  // Teclado
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox?.classList.contains('hidden')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    }
+  });
+</script>
+
+<style>
+  /* Prevenir layout shift durante lazy loading */
+  .gallery-item img {
+    min-height: 100%;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  }
+
+  .dark .gallery-item img {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  }
+
+  /* Animaciones suaves para el lightbox */
+  #lightbox {
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #lightbox-image {
+    animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Suavizar transiciones de hover */
+  .gallery-item {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+  }
+</style>
