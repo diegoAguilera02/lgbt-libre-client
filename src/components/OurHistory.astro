@@ -21,7 +21,8 @@ const image = "/images/principal.jpeg"
 
 <section id="nuestra-historia" class="section scroll-mt-24 bg-neutral-50 dark:bg-neutral-950">
   <div class="container-wide">
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <!-- Content + Image Grid -->
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center mb-12">
       <!-- Content -->
       <div class="space-y-8">
         <div class="space-y-4">
@@ -69,40 +70,40 @@ const image = "/images/principal.jpeg"
         </div>
       </div>
 
-      <!-- Image + Timeline -->
-      <div class="space-y-6">
-        <div class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 shadow-xl dark:border-neutral-800 dark:bg-neutral-800">
-          <img
-            src={image}
-            alt="Reunión comunitaria LGBT+"
-            class="h-full w-full object-cover"
-            loading="lazy"
-            width="1200"
-            height="900"
-          />
-          <div class="pointer-events-none absolute inset-0 bg-gradient-to-tl from-brand-600/30 via-transparent to-transparent" aria-hidden="true"></div>
-        </div>
+      <!-- Image -->
+      <div class="relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 shadow-xl dark:border-neutral-800 dark:bg-neutral-800">
+        <img
+          src={image}
+          alt="Reunión comunitaria LGBT+"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          width="1200"
+          height="900"
+        />
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-tl from-brand-600/30 via-transparent to-transparent" aria-hidden="true"></div>
+      </div>
+    </div>
 
-        <!-- Timeline -->
-        <div class="space-y-3">
-          {timeline.map((item, index) => (
-            <div class="flex gap-4">
-              <div class="flex flex-col items-center">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white dark:bg-brand-500">
-                  {index + 1}
-                </div>
-                {index < timeline.length - 1 && (
-                  <div class="w-0.5 flex-1 bg-gradient-to-b from-brand-600 to-brand-300 dark:from-brand-500 dark:to-brand-700" />
-                )}
+    <!-- Timeline Horizontal -->
+    <div class="relative">
+      <div class="grid gap-6 md:grid-cols-3">
+        {timeline.map((item, index) => (
+          <div class="relative">
+            <div class="flex flex-col items-center text-center">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white shadow-lg dark:bg-brand-500 mb-4">
+                {index + 1}
               </div>
-              <div class="flex-1 pb-6">
+              <div class="space-y-2">
                 <div class="text-sm font-bold text-brand-600 dark:text-brand-400">{item.year}</div>
                 <div class="font-semibold text-neutral-900 dark:text-neutral-50">{item.title}</div>
                 <div class="text-sm text-neutral-600 dark:text-neutral-400">{item.description}</div>
               </div>
             </div>
-          ))}
-        </div>
+            {index < timeline.length - 1 && (
+              <div class="hidden md:block absolute top-6 left-[calc(50%+24px)] w-[calc(100%-48px)] h-0.5 bg-gradient-to-r from-brand-600 to-brand-300 dark:from-brand-500 dark:to-brand-700" aria-hidden="true" />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </div>

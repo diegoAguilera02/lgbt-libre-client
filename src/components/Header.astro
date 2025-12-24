@@ -13,14 +13,44 @@
       <span class="text-base font-bold tracking-tight">LGBT+Libre</span>
     </a>
 
-    <nav class="hidden items-center gap-6 text-sm font-medium sm:flex md:gap-8" aria-label="Navegación principal">
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#quienes-somos">Quiénes somos</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#nuestra-historia">Nuestra historia</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#lineas-accion">Líneas de acción</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#campanas">Incidencia</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/gallery">Galería</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#noticias">Noticias</a>
-      <a class="hover:text-brand-700 dark:hover:text-brand-300" href="/#newsletter">Contáctenos</a>
+    <nav class="hidden items-center gap-8 text-sm font-medium sm:flex" aria-label="Navegación principal">
+      <!-- Dropdown: Nosotros -->
+      <div class="group relative">
+        <button class="inline-flex items-center gap-1 transition-colors hover:text-brand-700 dark:hover:text-brand-300">
+          Nosotros
+          <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="invisible absolute left-0 top-full mt-2 w-56 rounded-lg border border-neutral-200 bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-neutral-700 dark:bg-neutral-800">
+          <a href="/#quienes-somos" class="block px-4 py-2 transition-colors hover:bg-neutral-100 hover:text-brand-700 dark:hover:bg-neutral-700 dark:hover:text-brand-300">Quiénes somos</a>
+          <a href="/#nuestra-historia" class="block px-4 py-2 transition-colors hover:bg-neutral-100 hover:text-brand-700 dark:hover:bg-neutral-700 dark:hover:text-brand-300">Nuestra historia</a>
+          <a href="/#marco-estrategico" class="block px-4 py-2 transition-colors hover:bg-neutral-100 hover:text-brand-700 dark:hover:bg-neutral-700 dark:hover:text-brand-300">Marco estratégico</a>
+        </div>
+      </div>
+
+      <!-- Dropdown: Actividades -->
+      <div class="group relative">
+        <button class="inline-flex items-center gap-1 transition-colors hover:text-brand-700 dark:hover:text-brand-300">
+          Actividades
+          <svg class="h-4 w-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="invisible absolute left-0 top-full mt-2 w-56 rounded-lg border border-neutral-200 bg-white py-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-neutral-700 dark:bg-neutral-800">
+          <a href="/#lineas-accion" class="block px-4 py-2 transition-colors hover:bg-neutral-100 hover:text-brand-700 dark:hover:bg-neutral-700 dark:hover:text-brand-300">Líneas de acción</a>
+          <a href="/#campanas" class="block px-4 py-2 transition-colors hover:bg-neutral-100 hover:text-brand-700 dark:hover:bg-neutral-700 dark:hover:text-brand-300">Incidencia</a>
+        </div>
+      </div>
+
+      <!-- Links simples -->
+      <a class="transition-colors hover:text-brand-700 dark:hover:text-brand-300" href="/gallery">Galería</a>
+      <a class="transition-colors hover:text-brand-700 dark:hover:text-brand-300" href="/#noticias">Noticias</a>
+
+      <!-- CTA Contacto -->
+      <a class="btn-primary px-4 py-2 text-sm" href="/#newsletter">
+        Contacto
+      </a>
     </nav>
 
     <div class="flex items-center gap-2">
@@ -44,6 +74,7 @@
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#quienes-somos">Quiénes somos</a>
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#nuestra-historia">Nuestra historia</a>
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#lineas-accion">Líneas de acción</a>
+      <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#marco-estrategico">Marco estratégico</a>
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#campanas">Incidencia</a>
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/gallery">Galería</a>
       <a class="mobile-nav-link rounded px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800" href="/#noticias">Noticias</a>
