@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/image": "^0.18.0",
+    "@astrojs/node": "^9.5.1",
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.16.6",
     "nodemailer": "^7.0.12",

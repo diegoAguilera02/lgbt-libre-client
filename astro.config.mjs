@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://example.cl',
@@ -11,7 +12,10 @@ export default defineConfig({
     }),
     sitemap(),
   ],
-  output: 'static',
+  output: 'server',
+  adapter: node({
+    mode: 'standalone'
+  }),
   build: {
     inlineStylesheets: 'auto',
   },

@@ -17,20 +17,22 @@ RUN pnpm run build
 # ============================================
 # Stage 2: Production
 # ============================================
-FROM nginx:alpine
+FROM node:20-alpine AS runtime
 
-# Copiar archivos estáticos
-COPY --from=builder /app/dist /usr/share/nginx/html
+RUN apk add --no-cache libc6-compat
 
-# IMPORTANTE: Eliminar configuración default y copiar la creada
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Permisos
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
+# Copiar solo las dependencias de producción
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
 
-EXPOSE 80
+# Variables de entorno por defecto
+ENV HOST=0.0.0.0
+ENV PORT=4321
 
-# Ejecutar nginx en foreground
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 4321
+
+# Ejecutar el servidor Node.js de Astro
+CMD ["node", "./dist/server/entry.mjs"]
