@@ -27,7 +27,7 @@ services:
       - "traefik.http.routers.lgbt-libre-https.rule=Host(`lgbtlibre.cl`)"
       - "traefik.http.routers.lgbt-libre-https.tls=true"
       - "traefik.http.routers.lgbt-libre-https.tls.certresolver=letsencrypt"
-      - "traefik.http.services.lgbt-libre.loadbalancer.server.port=80"
+      - "traefik.http.services.lgbt-libre.loadbalancer.server.port=4321"
 
 networks:
   dokploy-network:
